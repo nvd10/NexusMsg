@@ -1,81 +1,36 @@
-name: Android CI
+name: Diagnose Project Structure
 
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  build:
+  diagnose:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
       
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      
-      - name: List directory structure (Debug)
+      - name: Show complete structure
         run: |
+          echo "=== Current directory ==="
           pwd
-          ls -la
-          ls -la app/ || true
-          find . -name "gradlew" -type f 2>/dev/null || echo "No gradlew found"
-      
-      - name: Make gradlew executable
-        run: |
+          echo ""
+          echo "=== All files in repository ==="
+          find . -type f -not -path "./.git/*" | sort
+          echo ""
+          echo "=== Check if gradlew exists ==="
           if [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-          elif [ -f "./gradlew.bat" ]; then
-            echo "Found gradlew.bat but running on Linux"
-            # Can't use .bat on Linux
+            echo "✅ gradlew exists"
+            cat ./gradlew | head -5
           else
-            echo "No gradlew found, checking if wrapper exists in gradle/ directory"
-            ls -la gradle/wrapper/ 2>/dev/null || echo "No wrapper directory"
+            echo "❌ gradlew does NOT exist"
           fi
-      
-      - name: Build with Gradle (Alternative approaches)
-        run: |
-          # Try different approaches
-          if [ -f "./gradlew" ]; then
-            ./gradlew build
-          elif [ -d "gradle/wrapper" ]; then
-            # Run gradle directly using wrapper jar
-            java -jar gradle/wrapper/gradle-wrapper.jar build
+          echo ""
+          echo "=== Check gradle/wrapper directory ==="
+          if [ -d "./gradle/wrapper" ]; then
+            echo "✅ gradle/wrapper exists"
+            ls -la ./gradle/wrapper/
           else
-            # Install Gradle and use it directly
-            echo "Installing Gradle..."
-            wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
-            unzip gradle-8.2-bin.zip
-            ./gradle-8.2/bin/gradle build
+            echo "❌ gradle/wrapper does NOT exist"
           fi
-      
-      - name: Run unit tests
-        run: |
-          if [ -f "./gradlew" ]; then
-            ./gradlew test
-          elif [ -d "gradle/wrapper" ]; then
-            java -jar gradle/wrapper/gradle-wrapper.jar test
-          else
-            ./gradle-8.2/bin/gradle test
-          fi
-      
-      - name: Upload test reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-reports
-          path: "**/build/reports/tests/"
-      
-      - name: Upload APK artifact
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-apk
-          path: |
-            app/build/outputs/apk/debug/*.apk
-            **/build/outputs/apk/debug/*.apk
+          echo ""
+          echo "=== Find any build.gradle files ==="
+          find . -name "build.gradle*" -type f || echo "No build.gradle files found!"
