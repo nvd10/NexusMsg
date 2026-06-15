@@ -19,23 +19,63 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: List directory structure (Debug)
+        run: |
+          pwd
+          ls -la
+          ls -la app/ || true
+          find . -name "gradlew" -type f 2>/dev/null || echo "No gradlew found"
       
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Make gradlew executable
+        run: |
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+          elif [ -f "./gradlew.bat" ]; then
+            echo "Found gradlew.bat but running on Linux"
+            # Can't use .bat on Linux
+          else
+            echo "No gradlew found, checking if wrapper exists in gradle/ directory"
+            ls -la gradle/wrapper/ 2>/dev/null || echo "No wrapper directory"
+          fi
+      
+      - name: Build with Gradle (Alternative approaches)
+        run: |
+          # Try different approaches
+          if [ -f "./gradlew" ]; then
+            ./gradlew build
+          elif [ -d "gradle/wrapper" ]; then
+            # Run gradle directly using wrapper jar
+            java -jar gradle/wrapper/gradle-wrapper.jar build
+          else
+            # Install Gradle and use it directly
+            echo "Installing Gradle..."
+            wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
+            unzip gradle-8.2-bin.zip
+            ./gradle-8.2/bin/gradle build
+          fi
       
       - name: Run unit tests
-        run: ./gradlew test
+        run: |
+          if [ -f "./gradlew" ]; then
+            ./gradlew test
+          elif [ -d "gradle/wrapper" ]; then
+            java -jar gradle/wrapper/gradle-wrapper.jar test
+          else
+            ./gradle-8.2/bin/gradle test
+          fi
       
       - name: Upload test reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: "**/build/reports/tests/"
       
       - name: Upload APK artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: |
+            app/build/outputs/apk/debug/*.apk
+            **/build/outputs/apk/debug/*.apk
