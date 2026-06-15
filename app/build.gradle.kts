@@ -97,7 +97,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Gson
-    implementation("com.google.code.gson4gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     // WebSocket for real-time messaging
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
@@ -124,9 +124,9 @@ dependencies {
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
 
     // Encrypted SharedPreferences
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("androidx.security:security-crypto:1.1.0")
 
-    // WebRTC for P2P voice/video calls
+    // WebRTC for P2P poice/video calls
     implementation("io.getstream:stream-webrtc-android:1.1.1")
 
     // Testing
