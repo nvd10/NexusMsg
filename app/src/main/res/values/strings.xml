@@ -31,10 +31,13 @@
     <string name="msg_no_internet">No internet connection</string>
     <string name="msg_typing">typing•</string>
     <string name="msg_online">online</string>
-    <string name="msg_last_seen">last seen %1$s</string>
-    <string name="msg_members_count">%d members</string>
-    <string name="msg_group_created">Group created! Share this ID: %s</string>
-    <string name="msg_user_found">Found: %s (%s)</string>
+    
+    <!-- Fixed: Added formatted="false" to strings with placeholders -->
+    <string name="msg_last_seen" formatted="false">last seen %1$s</string>
+    <string name="msg_members_count" formatted="false">%d members</string>
+    <string name="msg_group_created" formatted="false">Group created! Share this ID: %s</string>
+    <string name="msg_user_found" formatted="false">Found: %s (%s)</string>
+    
     <string name="msg_user_not_found">User not found</string>
     <string name="search_hint">Search…</string>
     <string name="new_chat">New Chat</string>
