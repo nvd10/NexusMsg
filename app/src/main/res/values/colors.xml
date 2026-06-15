@@ -24,7 +24,8 @@
 
     <!-- Tabs -->
     <color name="tab_active">#FFFFFF</color>
-    <color name="tab_inactive">#88FFFFF</color>
+    <!-- FIXED: Changed from #88FFFFF (6 F's) to #88FFFFFF (8 chars) -->
+    <color name="tab_inactive">#88FFFFFF</color>
     <color name="tab_indicator">#FFFFFF</color>
 
     <!-- FAB -->
