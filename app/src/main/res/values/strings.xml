@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NexusMsg</string>
+    <string name="title_chats">Chats</string>
+    <string name="title_groups">Groups</string>
+    <string name="title_calls">Calls</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_register">Register</string>
+    <string name="title_login">Login</string>
+    <string name="label_name">Full Name</string>
+    <string name="label_phone">Phone Number</string>
+    <string name="label_username">Username</string>
+    <string name="label_message">Message</string>
+    <string name="hint_name">Enter your full name</string>
+    <string name="hint_phone">Enter your phone number</string>
+    <string name="hint_username">Choose a username</string>
+    <string name="hint_message">Type a message</string>
+    <string name="hint_nexus_id">Enter 7-character Nexus ID</string>
+    <string name="bnt_register">Request Registration</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_create_group">Create Group</string>
+    <string name="btn_join_group">Join Group</string>
+    <string name="btn_lookup">Find User</string>
+    <string name="btn_call">Call</string>
+    <string name="btn_video_call">Video Call</string>
+    <string name="msg_registration_pending">Your registration request has been submitted. The admin will review and approve your account.</string>
+    <string name="msg_registration_approved">Your account has been approved! You can now log in.</string>
+    <string name="msg_end_to_end_encrypted">Messages are end-to-end encrypted</string>
+    <string name="msg_group_encrypted">Group messages are end-to-end encrypted</string>
+    <string name="msg_no_internet">No internet connection</string>
+    <string name="msg_typing">typing•</string>
+    <string name="msg_online">online</string>
+    <string name="msg_last_seen">last seen %1$s</string>
+    <string name="msg_members_count">%d members</string>
+    <string name="msg_group_created">Group created! Share this ID: %s</string>
+    <string name="msg_user_found">Found: %s (%s)</string>
+    <string name="msg_user_not_found">User not found</string>
+    <string name="search_hint">Search…</string>
+    <string name="new_chat">New Chat</string>
+    <string name="new_group">New Group</string>
+</resources>
