@@ -110,8 +110,8 @@ dependencies {
     implementation("org.whispersystems:curve25519-android:0.5.0")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinex:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinex:kotlinx-coroutines-core:1.7.3")
 
     // Image loading
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -124,9 +124,9 @@ dependencies {
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
 
     // Encrypted SharedPreferences
-    implementation("androidx.security:security-crypto:1.1.0")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
-    // WebRTC for P2P poice/video calls
+    // WebRTC for P2P voice/video calls
     implementation("io.getstream:stream-webrtc-android:1.1.1")
 
     // Testing
