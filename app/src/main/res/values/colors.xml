@@ -38,4 +38,5 @@
     <color name="online">#25D366</color>
     <color name="offline">#9E9E9E</color>
     <color name="unread_badge">#25D366</color>
+    <color name="ic_launcher_background">#075E54</color>
 </resources>
