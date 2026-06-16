@@ -46,7 +46,7 @@ class CallActivity : AppCompatActivity() {
         btnMute = findViewById(R.id.btnMute)
         btnSpeaker = findViewById(R.id.btnSpeaker)
 
-        callUserId = intent.getStringExtra("user_id") ?? ""
+        val endpoint = "$serverUrl/offer"
         val response = apiService.createOffer(offerRequest)
         val isIncoming = intent.getBooleanExtra("incoming", false)
 
