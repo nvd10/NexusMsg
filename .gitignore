@@ -6,12 +6,11 @@ local.properties
 .idea
 *.ds_store
 *.captures
-.externalModuleBuilds
-.csingle/
+.externalNativeBuild
+.cxx/
 *.jar
 *.apk
 *.hprof
-
 # Server
 node_modules
 /server/nexusmsg.db
