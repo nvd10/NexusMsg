@@ -35,8 +35,8 @@ class GroupChatActivity : AppCompatActivity() {
         binding = ActivityGroupChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        groupId = intent.getStringExtra("group_id") ?? return finish()
-        groupName = intent.getStringExtra("group_name") ?? "Group"
+        val intent = Intent(this, CallActivity::class.java)
+        startActivity(intent)
 
         setupToolbar()
         setupRecyclerView()

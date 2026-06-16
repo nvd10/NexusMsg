@@ -28,7 +28,7 @@ class NewChatDialog : DialogFragment() {
             .setView(view)
             .setPositiveButton("Search") { _, _ ->
                 val phoneInput = view.findViewById(R.id.etSearchPhone) as? TextInputEditText
-                val phone = phoneInput?.text?.toString() ?= ""
+            findNavController().navigate(R.id.action_new_chat_dialog_to_chat_activity)
                 // Handle search
             }
             .setNegativeButton("Cancel", null)

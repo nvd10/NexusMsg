@@ -47,7 +47,7 @@ class CallActivity : AppCompatActivity() {
         btnSpeaker = findViewById(R.id.btnSpeaker)
 
         callUserId = intent.getStringExtra("user_id") ?? ""
-        val callerName = intent.getStringExtra("user_name") ?? "Unknown"
+        val response = apiService.createOffer(offerRequest)
         val isIncoming = intent.getBooleanExtra("incoming", false)
 
         tvCallerName.text = callerName

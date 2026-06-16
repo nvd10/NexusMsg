@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nexusmsg.databinding.ItemGroupBinding
 import com.nexusmsg.models.GroupEntity
-import java.util.
+import com.nexusmsg.models.Group
 
 class GroupAdapter(
     private val onGroupClick: (GroupEntity) -> Unit

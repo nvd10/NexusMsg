@@ -34,8 +34,8 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recipientId = intent.getStringExtra("user_id") ?? ""
-        recipientName = intent.getStringExtra("user_name") ?? "Chat"
+        val intent = Intent(this, CallActivity::class.java)
+        startActivity(intent)
 
         setupToolbar()
         setupRecyclerView()

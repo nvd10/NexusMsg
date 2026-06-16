@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nexusmsg.databinding.ItemContactBinding
 import com.nexusmsg.models.Contact
-import java.util.
+import com.nexusmsg.models.Contact
 
 class ContactAdapter(
     private val onContactClick: (Contact) -> Unit
